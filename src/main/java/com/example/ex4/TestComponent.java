@@ -1,8 +1,6 @@
 package com.example.ex4;
 
-import org.apache.tomcat.util.digester.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
