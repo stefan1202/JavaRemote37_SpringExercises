@@ -14,6 +14,7 @@ public class HelloWorldLogger implements CommandLineRunner {
     this.simpleLogger = simpleLogger;
   }
 
+
   @Override
   public void run(final String... args) throws Exception {
     simpleLogger.printMessage("Hello from command line runner");
