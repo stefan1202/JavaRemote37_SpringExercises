@@ -16,6 +16,7 @@ public class GlobalErrorHandler {
   @ExceptionHandler(SdaException.class)
   public Error handleSdaException(final SdaException exception) {
     log.debug("something bad has happened...");
+    java.lang.Error e = new java.lang.Error();
     return new Error(exception.getMessage());
   }
 }
