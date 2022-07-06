@@ -20,18 +20,19 @@ public class Controller {
 
 
     @GetMapping(API_FILES_DATA)
-    public FileDataCollection getAllData(){
-        return  fileDataService.findAll();
-    }
-    @PostMapping(API_FILES_DATA)
-    public ResponseEntity<FileData> createFile(@RequestBody FileData   fileData) throws URISyntaxException {
-        FileData objectCreated=fileDataService.save(fileData);
-        return ResponseEntity.created(new URI(API_FILES_DATA+objectCreated.getId())).build();
+    public FileDataCollection getAllData() {
+        return fileDataService.findAll();
     }
 
-    @GetMapping(API_FILES_DATA+"/{id}")
-    public FileData getById(@PathVariable Long id ){
-       return fileDataService.findByID(id);
+    @PostMapping(API_FILES_DATA)
+    public ResponseEntity<FileData> createFile(@RequestBody FileData fileData) throws URISyntaxException {
+        FileData objectCreated = fileDataService.save(fileData);
+        return ResponseEntity.created(new URI(API_FILES_DATA + "/" + objectCreated.getId())).build();
+    }
+
+    @GetMapping(API_FILES_DATA + "/{id}")
+    public FileData getById(@PathVariable Long id) {
+        return fileDataService.findByID(id);
     }
 
 
