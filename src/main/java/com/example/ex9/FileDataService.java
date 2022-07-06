@@ -12,7 +12,7 @@ public class FileDataService {
     FileDataRepository repo;
 
     public FileDataCollection findAll() {
-        return new FileDataCollection((List<FileData>) repo.findAll()) ;
+        return new FileDataCollection((List<FileData>) repo.findAll());
     }
 
     public FileData save(FileData fileData) {
@@ -20,12 +20,19 @@ public class FileDataService {
     }
 
     public FileData findByID(Long id) {
-       return repo.findById(id).orElseThrow(()-> new SdaException("Element not found for id:"+ id));
+        return repo.findById(id).orElseThrow(() -> new SdaException("Element not found for id:" + id));
     }
 
 
     public void updateObject(Long id, FileData fileData) {
-        repo.findById(id).orElseThrow(()-> new SdaException("Object not found for id:" + id));
+        repo.findById(id).orElseThrow(() -> new SdaException("Object not found for id:" + id));
         repo.save(fileData);
     }
+
+    public void deleteByID(Long id) {
+        repo.findById(id).orElseThrow(() -> new SdaException("Object not found for id:" + id));
+        repo.deleteById(id);
+    }
+
+
 }

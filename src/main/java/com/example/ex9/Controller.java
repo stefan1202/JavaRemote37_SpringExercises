@@ -39,13 +39,22 @@ public class Controller {
 
     @PutMapping(API_FILES_DATA + "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateFileDataById(@RequestBody FileData fileData, @PathVariable Long id){
-        fileDataService.updateObject(id,fileData);
+    public void updateFileDataById(@RequestBody FileData fileData, @PathVariable Long id) {
+        fileDataService.updateObject(id, fileData);
+    }
+
+    @DeleteMapping(API_FILES_DATA + "/{id}")
+    public void deleteByID(@PathVariable Long id) {
+        fileDataService.deleteByID(id);
+    }
+
+    public FileDataCollection getFileDataCollectionOrderedByName(){
+       return fileDataService.getFileDataCollectionOrderedByName();
     }
 
     @ExceptionHandler(SdaException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String errorHandler(SdaException exception){
+    public String errorHandler(SdaException exception) {
         return exception.getMessage();
     }
 
