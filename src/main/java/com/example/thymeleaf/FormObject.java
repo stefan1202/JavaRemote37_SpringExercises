@@ -18,4 +18,6 @@ public class FormObject {
     @Email
     @NotBlank(message = "Emailul este obligatoriu")
     private String email;
+
+
 }

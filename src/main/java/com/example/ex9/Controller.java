@@ -1,6 +1,7 @@
 package com.example.ex9;
 
 import com.example.jpa.Book;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,16 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 public class Controller {
-    @Autowired
-    Repo repo;
+    FileDataService fileDataService;
 
     @GetMapping("/api/files-data")
-    public List<FileData> getAllData(){
-        return (List<FileData>) repo.findAll();
+    public FileDataCollection getAllData(){
+        return  fileDataService.findAll();
     }
     @PostMapping("/api/files-data")
     public FileData createFile(@RequestBody FileData   fileData){
-        return repo.save(fileData);
+        return fileDataService.save(fileData);
     }
 }
