@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -33,6 +34,12 @@ public class Controller {
     @GetMapping(API_FILES_DATA + "/{id}")
     public FileData getById(@PathVariable Long id) {
         return fileDataService.findByID(id);
+    }
+
+    @PutMapping(API_FILES_DATA + "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateFileDataById(@RequestBody FileData fileData, @PathVariable Long id){
+        fileDataService.updateObject(id,fileData);
     }
 
 
