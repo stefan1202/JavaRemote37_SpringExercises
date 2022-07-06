@@ -11,7 +11,7 @@ import java.util.UUID;
 public class FileData {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
     private String fileName;
     private String extension;
     private Integer sizeInKb;
