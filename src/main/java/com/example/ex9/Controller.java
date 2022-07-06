@@ -1,5 +1,6 @@
 package com.example.ex9;
 
+import com.example.exceptions.SdaException;
 import com.example.jpa.Book;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,12 @@ public class Controller {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateFileDataById(@RequestBody FileData fileData, @PathVariable Long id){
         fileDataService.updateObject(id,fileData);
+    }
+
+    @ExceptionHandler(SdaException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String errorHandler(SdaException exception){
+        return exception.getMessage();
     }
 
 
