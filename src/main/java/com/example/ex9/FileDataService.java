@@ -35,4 +35,8 @@ public class FileDataService {
     }
 
 
+    public FileDataCollection getFileDataCollectionOrderedByName() {
+        List<FileData> results = repo.retriveAllOrderByNameNative();
+        return new FileDataCollection(results);
+    }
 }

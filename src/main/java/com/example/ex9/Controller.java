@@ -48,6 +48,7 @@ public class Controller {
         fileDataService.deleteByID(id);
     }
 
+    @GetMapping(API_FILES_DATA+ "/sorted")
     public FileDataCollection getFileDataCollectionOrderedByName(){
        return fileDataService.getFileDataCollectionOrderedByName();
     }
