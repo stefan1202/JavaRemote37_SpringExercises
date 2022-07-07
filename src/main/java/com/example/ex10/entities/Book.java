@@ -1,4 +1,4 @@
-package com.example.ex10;
+package com.example.ex10.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
