@@ -17,6 +17,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("SELECT b FROM books b WHERE b.pagesNum >= :pagesNum")
     List<Book> findWherePagesNumIsGreaterThanX(@Param("pagesNum")Integer pagesNum);
+
 }
 
 

@@ -22,7 +22,7 @@ public class BookForm {
     private String author;
 
     @Length(min=9, max=20)
-    private String ISBN;
+    private String isbn;
 
     @Min(0)
     private Integer pagesNum;

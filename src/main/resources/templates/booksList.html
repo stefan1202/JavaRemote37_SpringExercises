@@ -6,10 +6,21 @@
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
 </head>
 <body>
 <div class="container my-5">
     <h2 class="mb-5">Books</h2>
+    <div class="row">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
     <div class="row">
         <div class="col-xl-6">
             <a th:href="@{/book}" class="btn btn-primary"><i
@@ -26,14 +37,26 @@
                 <th>Title</th>
                 <th>ISBN</th>
                 <th>PagesNumber</th>
-
+                <th>Edit</th>
+                <th>Delete</th>
                 </thead>
                 <tbody>
                 <tr th:each="book : ${books}">
                     <td th:text="${book.author}"></td>
                     <td th:text="${book.title}"></td>
-                    <td th:text="${book.ISBN}"></td>
+                    <td th:text="${book.isbn}"></td>
                     <td th:text="${book.pagesNum}"></td>
+                    <td>
+                        <a th:href="@{/book/{id}(id=${book.id})}" class="btn btn-primary">
+                            <i class="fas fa-user-edit m-lg-2"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/book/delete/{id}(id=${book.id})}" class="btn btn-primary">
+                            <i class="fas fa-user-times m-lg-2"
+                            ></i>
+                        </a>
+                    </td>
 
 
                     <!--       <td th:text="${book.type}? #{true} : #{false}">yes</td>-->
@@ -43,5 +66,21 @@
         </div>
     </div>
 </div>
+<script>
+    $("#birthplace").select2({
+        theme: "bootstrap4",
+        ajax: {
+            url: '/books/author',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response) {
+                return {
+                    results: response
+                };
+            },
+            cache: true
+        }
+    });
+</script>
 </body>
 </html>

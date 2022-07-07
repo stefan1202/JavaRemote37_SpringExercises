@@ -12,7 +12,7 @@ public class BookMapper implements Mapper<Book, BookForm> {
         BookForm dto = new BookForm();
         dto.setId(entity.getId());
         dto.setAuthor(entity.getAuthor());
-        dto.setISBN(entity.getISBN());
+        dto.setIsbn(entity.getISBN());
         dto.setTitle(entity.getTitle());
         dto.setPagesNum(entity.getPagesNum());
 
@@ -27,7 +27,7 @@ public class BookMapper implements Mapper<Book, BookForm> {
             bookEntity.setId(dto.getId());
         }
         bookEntity.setAuthor(dto.getAuthor());
-        bookEntity.setISBN(dto.getISBN());
+        bookEntity.setISBN(dto.getIsbn());
         bookEntity.setTitle(dto.getTitle());
         bookEntity.setPagesNum(dto.getPagesNum());
         return bookEntity;
