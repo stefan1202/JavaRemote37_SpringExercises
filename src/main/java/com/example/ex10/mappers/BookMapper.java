@@ -9,14 +9,23 @@ import org.springframework.stereotype.Service;
 public class BookMapper implements Mapper<Book, BookForm> {
     @Override
     public BookForm convertToDto(Book entity) {
-        return null;
+        BookForm dto = new BookForm();
+        dto.setId(entity.getId());
+        dto.setAuthor(entity.getAuthor());
+        dto.setISBN(entity.getISBN());
+        dto.setTitle(entity.getTitle());
+        dto.setPagesNum(entity.getPagesNum());
+
+        return dto;
+
     }
 
     @Override
     public Book convertToEntity(BookForm dto) {
         Book bookEntity = new Book();
-
-        bookEntity.setId(dto.getId());
+        if (dto.getId() != null) {
+            bookEntity.setId(dto.getId());
+        }
         bookEntity.setAuthor(dto.getAuthor());
         bookEntity.setISBN(dto.getISBN());
         bookEntity.setTitle(dto.getTitle());

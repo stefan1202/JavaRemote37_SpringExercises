@@ -33,6 +33,7 @@ public class BookController {
             return "createBookForm";
         }else {
             bookService.createBook(book);
+            model.addAttribute("books",bookService.getAllBooks());
             return "booksList";
         }
     }
